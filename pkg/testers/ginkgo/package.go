@@ -25,7 +25,7 @@ func (t *Tester) AcquireTestPackage() error {
 		cmd := exec.Command(
 			"gsutil",
 			"cat",
-			fmt.Sprintf("gs://%s/release/latest.txt", t.TestPackageBucket),
+			fmt.Sprintf("gs://%s/ci/latest.txt", t.TestPackageBucket),
 		)
 		lines, err := exec.OutputLines(cmd)
 		if err != nil {
@@ -147,7 +147,7 @@ func (t *Tester) ensureReleaseTar(downloadPath, releaseTar string) error {
 
 	cmd := exec.Command("gsutil", "cp",
 		fmt.Sprintf(
-			"gs://%s/release/%s/%s",
+			"gs://%s/ci/%s/%s",
 			t.TestPackageBucket,
 			t.TestPackageVersion,
 			releaseTar,
@@ -164,7 +164,7 @@ func (t *Tester) ensureReleaseTar(downloadPath, releaseTar string) error {
 func (t *Tester) compareSHA(downloadPath string, releaseTar string) error {
 	cmd := exec.Command("gsutil", "cat",
 		fmt.Sprintf(
-			"gs://%s/release/%s/%s",
+			"gs://%s/ci/%s/%s",
 			t.TestPackageBucket,
 			t.TestPackageVersion,
 			releaseTar+".sha256",

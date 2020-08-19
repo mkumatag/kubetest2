@@ -133,7 +133,7 @@ func NewDefaultTester() *Tester {
 	return &Tester{
 		FlakeAttempts:     1,
 		Parallel:          1,
-		TestPackageBucket: "kubernetes-release",
+		TestPackageBucket: "kubernetes-release-dev",
 	}
 }
 
